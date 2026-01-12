@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversiones truck parts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header & Navigation -->
+    <header class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-2 sm:p-3 rounded-lg shadow-lg">
+                        <i class="fas fa-car text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-2xl font-bold text-white">Inversiones truck parts</h1>
+                        <p class="text-xs text-gray-400 hidden sm:block">Repuestos de Excelencia</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="../index.html#inicio" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Inicio</a>
+                    <a href="../index.html#productos" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Productos</a>
+                    <a href="../index.html#categorias" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Categorías</a>
+                    <a href="../index.html#contacto" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Contacto</a>
+                </div>
+                
+                <!-- Right Side Actions -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <a href="../index.html" class="text-gray-300 hover:text-white transition-colors duration-300 hidden sm:block">
+                        <i class="fas fa-arrow-left text-lg sm:text-xl"></i>
+                    </a>
+                    <button class="relative text-gray-300 hover:text-white transition-colors duration-300">
+                        <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center" id="cartCount">0</span>
+                    </button>
+                    <button class="lg:hidden text-gray-300 hover:text-white">
+                        <i class="fas fa-menu text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-8 text-center">
+            <i class="fas fa-shopping-cart text-blue-600 mr-3"></i>Carrito de Compras
+        </h1>
+
+        <!-- Cart Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-lg p-6" id="cartItemsContainer">
+                    <div class="text-center py-12">
+                        <i class="fas fa-inbox text-gray-300 text-6xl mb-4"></i>
+                        <p class="text-gray-500 text-lg">Tu carrito está vacío</p>
+                        <a href="../index.html" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                            Continuar comprando
+                        </a>
+                    </div>
+                </div>
+                <!-- Botón Continuar comprando cuando hay productos -->
+                <div class="mt-6 hidden" id="continueBtnContainer">
+                    <a href="../index.html" class="block w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold">
+                        <i class="fas fa-arrow-left mr-2"></i>Continuar comprando
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 text-white sticky top-24">
+                    <h2 class="text-2xl font-bold mb-6">Resumen</h2>
+                    
+                    <div class="space-y-3 mb-6 border-b border-blue-400 pb-6">
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total a pagar:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold mb-3">Método de pago:</label>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <label class="text-sm cursor-pointer">💵 Efectivo</label>
+                            </div>
+                            <div class="flex items-center">
+                                <label class="text-sm cursor-pointer">🏦 Transferencia</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="pagarWhatsapp()" id="payBtn" disabled class="w-full bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed">
+                        <i class="fab fa-whatsapp mr-2"></i>Pagar directamente con el dueño
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../js/carrito.js"></script>
+</body>
+</html>
